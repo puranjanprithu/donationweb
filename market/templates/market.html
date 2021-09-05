@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    market
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container-fluid ">
+    <div class="row" style=" margin-left: 20px; ">
+        <div class="col-lg-8 col-md-12">
+            <div class="row pr-4 position-relative pt-5">
+                <select class="btn btn-secondary position-absolute" onchange="filter_category(this)" 
+                                style="right: 20%; left: 65%; width: 30%;" name="category" id="category" selectedIndex="1">
+                    <option value="none" selected disabled hidden> Select an Option</option>
+                    <option  value="0">All</option>  
+
+                    {% for cat in catg  %}
+                    
+                    {% if cat.item_detail | length >0 %}
+                    <option  value={{cat.id}}> {{cat.name}}  </option>
+                    {% endif %}
+                        
+                    {% endfor %}
+                </select>
+                <div class="container-fluid ">
+                    <h1>Pending </h1>
+                    
+                    <div class="row border row-raised shadow  text-dark p-2">
+                        <!-- column 1 -->
+                       
+                        
+                        
+                        {% for item in items  %}
+                        {% include 'includes/donate_modal.html' %}
+                        
+                        {% if item.raised < item.price and item.acheived==False %}
+                            
+                        
+                            
+                        <div class="col-lg-4 col-md-6 col-sm-12 p-2">
+                        <div class="card w-100 shadow position-relative" style="width: 25rem;">
+                            <img class="card-img-top" src="{{url_for('static',filename='img/uploads/donation/'+ item.id|string +'.jpg')}}"  onerror="this.onerror=null; this.src='{{url_for('static',filename='img/user.png')}}'"  style="max-height: 200px;" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">{{item.name}} </h5>
+                              <b class="text-dark text-center"> $ {{item.raised}}/{{item.price}} collected</b> <br>
+
+                              <div class="progress ">
+                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ ((item.raised/item.price)*100)|round(2, 'floor')}}%" aria-valuenow="75" aria-valuemin="0" aria-valuemax={{item.price}}>{{ ((item.raised/item.price)*100)|round(2, 'floor') }}%</div>
+                            </div>
+                              <p class=" btn card-text btn-block"><b>{{item.heading}} </b></p>
+                              <button class="btn alert-warning  position-absolute " style="top: 3px; right: 3px; border-radius: 20px;" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}"><i><b>i</b></i></button>
+                              <!-- <button class="btn btn-success position-absolute " style="top: 30%; left: 20%; right: 20%; width: 60%;"  data-toggle="modal" data-target="#modal-donate-{{item.id}}">Donate</button> -->
+                            </div>
+                            <div class="card-footer text-right">
+                               <button class="btn btn-success card-link w-100 p-1" data-toggle="modal" data-target="#modal-donate-{{item.id}}">Donate</button>
+                            </div>
+                          </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+                    <br>
+                    <h1>Finished </h1>
+                    <div class="row border row-raised shadow text-dark p-2">
+                        <!-- column 1 -->
+                       
+                        
+                        
+                        {% for item in items  %}
+                        {% include 'includes/donate_modal.html' %}
+                        
+                        {% if item.raised >= item.price or item.acheived==True %}
+                        
+                            
+                        <div class="col-lg-4 col-md-6 col-sm-12 p-2">
+                        <div class="card w-100 shadow position-relative" style="width: 25rem;">
+                            <img class="card-img-top" src="{{url_for('static',filename='img/uploads/donation/'+ item.id|string +'.jpg')}}" onerror="this.onerror=null; this.src='{{url_for('static',filename='img/user.png')}}'" style="max-height: 200px;" alt="Card image cap">
+                            <div class="card-body ">
+                              <h5 class="card-title">{{item.name}} </h5>
+                              
+
+                              
+                              {% if item.acheived ==False %}
+                              <b class="text-dark text-center"> $ {{item.raised}}/{{item.price}} collected</b> <br>
+                              <div class="progress ">
+                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ ((item.raised/item.price)*100)|round(2, 'floor')}}%" aria-valuenow="75" aria-valuemin="0" aria-valuemax={{item.price}}>{{ ((item.raised/item.price)*100)|round(2, 'floor') }}%</div>
+                                </div>
+                                {% else %}
+                                <b class="text-dark btn-block alert-success text-center"> $ {{item.raised}} Successfully Debited</b> <br>
+
+                              {% endif %}
+
+                                  
+                              
+                              <p class=" btn card-text btn-block"><b>{{item.heading}} </b></p>
+                              <button class="btn btn-primary card-link  position-absolute " style="top: 4px; right: 4px; border-radius: 20px;" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}"><i><b>i</b></i></button>
+                            </div>
+                          </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+                    <br><br>
+                </div>
+
+            </div>
+
+            <!-- 2nd row -->
+            
+
+
+        </div>
+        <!-- right column  -->
+        <div class="col-lg-4 right-container  pt-3">
+            <h2>My Donations</h2>
+            <hr class="text-white" >
+            <!-- my payments -->
+        <div class="row  p-3">
+            
+            <div class="container-fluid"> 
+                <!-- row1 -->
+                <div class="row ">
+                    <table class="table table-hover table-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                        </tr>
+
+                        {% for pay in current_user.paymenet_details %}
+                        <tr>
+                            <td>#{{pay.id}} </td>
+                            <td>{{pay.item_name}} </td>
+                            <td>{{pay.timestamp.strftime("%d/%m/%y")}} </td>
+                            <td>$ {{pay.payment_amt}}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
+
+{% block script %}
+    <script>
+        var sel=document.getElementById('category')
+        sel.selectedIndex={{cat_id}}
+
+        function filter_category(elem){
+            // alert(elem.selectedOptions[0].innerText)
+            console.log(elem.selectedIndex)
+            console.log(elem.value)
+            console.log(elem.selectedOptions[0].innerText)
+            location.href="/market/q?id="+elem.value + "&category=" + elem.selectedOptions[0].innerText
+            // /market/q?id=0&category=All
+        }
+        
+    </script>
+{% endblock script %}
+    

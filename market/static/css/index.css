@@ -1,0 +1,44 @@
+html,body{
+height: 100%;
+width: 100%;
+font-family: 'Poppins', sans-serif;
+
+}
+
+footer{
+background-color: #3f3f3f; 
+color: #d5d5d5;
+}
+
+.light{
+    color:white;
+
+}
+
+/* remove decoration from <a> tag */
+.nodeco{
+text-decoration: none;
+color: white;
+}
+
+.accordion-item{
+    background-color: rgb(229, 233, 241);
+    color: #3f3f3f;
+}
+
+
+.row-raised{
+    background-color: #c4c9d6;
+    color: darkblue;
+    border-radius: 12px;
+
+}
+
+.right-container{
+    background-color: #aaaaaa;
+    color: white;
+}
+
+.table{
+    border-radius: 12px;
+    }

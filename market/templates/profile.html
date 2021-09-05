@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+{% block title %}
+market
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row ">
+
+        <!-- left  -->
+        <div class="col-lg-8 pt-3">
+            <div class="content-section ">
+                <div class="row  m-3  position-relative  " style="height: 200px">
+                    <div class="col">
+                        <div class="row shadow-lg border position-absolute p-3"
+                            style="left: 5%;   bottom: 0%; top: 0%; border-radius: 12px;">
+                            <div class="col-lg-4  m-1  ">
+                                <a href="/upload-image/profile/{{current_user.id}}">
+                                    <img src="{{url_for('static',filename='img/uploads/profile/' + current_user.id|string + '.jpg')}}"
+                                        style="border-radius: 50%;"
+                                        onerror="this.onerror=null; this.src='{{url_for('static',filename='img/user.png')}}'"
+                                        width="150" height="150" class="round-circle">
+                                </a>
+                            </div>
+                            <div class="col m-2 ">
+                                <h2 class="account-heading">{{current_user.username}}</h2>
+                                <p class="text-white">{{current_user.email_address}}</p>
+                                Wallet : <b style="color: lawngreen;">$ {{current_user.budget}} </b>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- my payments -->
+
+            <br>
+
+            <h3>New Requests</h3>
+            <!-- filling currently  -->
+            <div id="filling" class="row row-raised shadow p-2 m-3">
+                {% for item in current_user.items %}
+                {% if item.acheived==False and item.raised < item.price %} {% include 'includes/transfer_fund.html' %}
+                    <div class="col-lg-3 col-md-4 col-sm-6  p-2 text-dark">
+                    <div class="card w-100 shadow position-relative" style="width: 25rem;">
+                        <img class="card-img-top"
+                            src="{{url_for('static',filename='img/uploads/donation/'+ item.id|string +'.jpg')}}"
+                            style="max-height: 150px;" alt="Card image cap">
+
+                        <div class="card-body ">
+
+                            <h5 class="card-title">{{item.name}} </h5>
+                            <a class="btn-sm btn-warning position-absolute " href="/upload-image/donation/{{item.id}}"
+                                style="right: 0; top: 40%; text-decoration: none;">Change Pic</a>
+
+                            <b class="text-dark text-center"> $ {{item.raised}}/{{item.price}} </b><br>
+                            <div class="progress mb-2">
+                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                    style="width: {{ ((item.raised/item.price)*100)|round(2, 'floor')}}%"
+                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax={{item.price}}>{{
+                                    ((item.raised/item.price)*100)|round(2, 'floor') }}%</div>
+                            </div>
+
+                            <b class="text-dark btn-block text-center bg-warning "> Pending</b>
+
+                        </div>
+                    </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- my requests  -->
+        <h3 class="filled">Collection Complete</h3>
+        <!-- to be transferred  -->
+        <div id="filled" class="row row-raised shadow p-2 m-3">
+            {% for item in current_user.items %}
+            {% if item.acheived==False and item.raised >= item.price %}
+
+            {% include 'includes/transfer_fund.html' %}
+            <div class="col-lg-3 col-md-4 col-sm-6 p-2 text-dark">
+                <div class="card w-100 shadow " style="width: 25rem;">
+                    <img class="card-img-top"
+                        src="{{url_for('static',filename='img/uploads/donation/'+ item.id|string +'.jpg')}}"
+                        style="max-height: 150px;" alt="Card image cap">
+
+                    <div class="card-body ">
+
+                        <h5 class="card-title">{{item.name}} </h5>
+
+
+                        <b class="text-dark text-center"> $ {{item.raised}}/{{item.price}} </b><br>
+                        <div class="progress mb-2">
+                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                style="width: {{ ((item.raised/item.price)*100)|round(2, 'floor')}}%" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax={{item.price}}>{{
+                                ((item.raised/item.price)*100)|round(2, 'floor') }}%</div>
+                        </div>
+                        <button class="text-white btn-block text-center bg-primary" data-toggle="modal"
+                            data-target="#Transfer-Money-{{item.id}}"> Transfer Money</button>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+
+        <h3>Transfer Finished</h3>
+        <!-- transferred -->
+        <div class="row row-raised shadow p-2 m-3">
+            {% for item in current_user.items %}
+            {% if item.acheived==True %}
+
+            {% include 'includes/transfer_fund.html' %}
+            <div class="col-lg-3 col-md-4 col-sm-6 p-2 text-dark">
+                <div class="card w-100 shadow " style="width: 25rem;">
+                    <img class="card-img-top"
+                        src="{{url_for('static',filename='img/uploads/donation/'+ item.id|string +'.jpg')}}"
+                        style="max-height: 150px;" alt="Card image cap">
+
+                    <div class="card-body ">
+
+                        <h5 class="card-title">{{item.name}} </h5>
+
+                        {% if item.acheived==True %}
+                        <b class="text-dark text-center"> $ {{item.raised}} credited to Wallet</b><br>
+                        <b class="text-white btn-lg btn-block text-center bg-success "> Transferred</b>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+
+    </div>
+    <!-- right  -->
+    <div class="col-4 right-container pt-3" style="bottom: 0;">
+        <!-- my payments -->
+        <div class="row  p-3">
+            <h2>My Donations</h2>
+            <hr>
+            <div class="container-fluid"> 
+                <!-- row1 -->
+                <div class="row ">
+                    <table class="table table-hover table-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                        </tr>
+
+                        {% for pay in current_user.paymenet_details %}
+                        <tr>
+                            <td>#{{pay.id}} </td>
+                            <td>{{pay.item_name}} </td>
+                            <td>{{pay.timestamp.strftime("%d/%m/%y")}} </td>
+                            <td>$ {{pay.payment_amt}}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Register
+{% endblock title %}
+
+
+{% block content %}
+<!-- {{form}} -->
+
+<body class="text-center">
+
+
+    <div class="container pt-5 mb-5">
+
+        <img class="mb-4" style="border-radius: 50%;" src="{{url_for('static',filename='/img/website/logo.jpg')}}"
+            width="200px" height="200px" alt="company_logo">
+        <h1 class=" mb-3 font-weight-normal mx-auto">
+            Create New Account
+        </h1>
+        <br>
+        <form class="form-register" style="color:white" method="POST">
+            {{form.hidden_tag()}}
+            {{ form.username.label()}}
+            {{form.username(class="form-control",placeholder="User Name")}}
+
+            {{ form.email_address.label()}}
+            {{form.email_address(class="form-control",placeholder="Email Address")}}
+
+            {{ form.password1.label()}}
+            {{form.password1(class="form-control",placeholder="Password")}}
+
+            {{ form.password2.label()}}
+            {{form.password2(class="form-control",placeholder="Confirm Password")}}
+            <br>
+
+            <div class="checkbox mb-3">
+                <h6>Already have an account?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
+            </div>
+
+            {{ form.submit(class=" btn btn-lg btn-block btn-primary")}}
+
+        </form>
+    </div>
+    <br>
+</body>
+{% endblock content %}
+
+
+{% block script %}
+<script>
+    var f = document.querySelector('footer')
+    f.remove()
+</script>
+{% endblock script %}

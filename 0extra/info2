@@ -1,0 +1,23 @@
+
+from market import db
+from market.models import *
+item= Item(
+                    name= "Girl Child",
+                    price=2000,
+                    heading="To Help 100 girls in your nearest area of dehradun",
+                    description= "Details Complete 1",
+                    raised=0,
+                    acheived=False,
+                    owner=1)
+db.session.add(item)
+item2= Item(
+                    name= "Child Education",
+                    price=4000,
+                    heading="To Provide Books to 10 students in Chamoli",
+                    description= "Details Complete 2",
+                    raised=0,
+                    acheived=False,
+                    owner=2
+                )
+db.session.add(item2)
+db.session.commit()

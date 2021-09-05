@@ -1,0 +1,362 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row p-5">
+        <div class="container">
+            <div class="row row-raised mb-5 border shadow p-3">
+                <h1 id="feedback">Feedback</h1>
+                <hr style="width: 98%;">
+
+                <div class="mb-3">
+                    <div class="form-group">
+                        <label> Name</label>
+                        <input type="text" id="name" placeholder="Enter your Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label> Message</label>
+                        <textarea class="form-control" id="message" placeholder="Enter your Name" cols="30" rows="3">
+                            </textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="submit_entry()">Leave Message</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- ACCORDION START - TERMS AND CONDITIONS -->
+
+        <div class="container-fluid">
+            <div class="row row-raised mb-5 p-3 shadow">
+                <h2 id="terms" style="justify-content: center; text-decoration:underline">Terms of use</h2>
+                <p class="lead">TERMS OF USE OF THE WEBSITE AND TERMS AND CONDITIONS OF SERVICE</p>
+                <hr style="width: 98%;">
+
+
+
+                <div class="accordion" id="accordionExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                1. Acceptance of the Terms of Use
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>These terms of use (“Terms of Use”) are entered into by and between you (“you”) and
+                                    CrowdFunding (“Company”), the owner of the website www.crowdfunding.com (the
+                                    “Website”). It
+                                    governs your access to and use of every content, functionality or services offered
+                                    on or through
+                                    the Website.
+
+                                    These Terms of Use apply to you even if you are a guest and not a registered user of
+                                    the
+                                    Website. Please therefore read these Terms of Use carefully before using the
+                                    Website. By using
+                                    the Website or by clicking to accept or agree to the Terms of Use, you accept and
+                                    agree to be
+                                    bound and abide by these Terms of Use and our Privacy Policy, found at [PRIVACY
+                                    POLICY URL],
+                                    incorporated herein by reference. If you do not agree to these Terms of Use or the
+                                    Privacy
+                                    Policy, you must not access or use the Website.
+
+                                    The two principal categories of users of this Website are Campaigners and Donors. A
+                                    Campaigner
+                                    is one who launches a campaign for donations (“Campaign”). A Donor is anyone who
+                                    makes a
+                                    donation to the campaign. Additionally, the Website may be accessed by any person
+                                    who is neither
+                                    a Campaigner nor a Donor. These Terms of Use apply to all who access this website,
+                                    including but
+                                    not limited to, Campaigners and Donors.
+
+                                    Use of the Website, however, is not available to persons who cannot form legally
+                                    binding
+                                    contracts under the Indian Contract Act, 1872 (the “Contract Act”). Persons who are
+                                    not
+                                    competent to contract within the meaning of the Contract Act, i.e., minors,
+                                    undischarged
+                                    insolvents, etc. are not eligible to use the Website. Such persons may not register
+                                    on the
+                                    Website, transact on it, or otherwise use the Website.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                2. Changes to the Terms of Use
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>We may revise and update these Terms of Use from time to time in our sole discretion.
+                                    All
+                                    changes are effective immediately when we post them and apply to all access to and
+                                    use of the
+                                    Website thereafter. Your continued use of the Website following the posting of
+                                    revised Terms of
+                                    Use means that you accept and agree to the changes and the revised Terms of Use. We
+                                    do not
+                                    undertake to notify you of proposed or actual changes.</p>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                5. Trademarks
+
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>The Company’s name, logo, and all related names, logos, product and service names,
+                                    designs,
+                                    and slogans are trademarks of the Company or its affiliates or licensors. You must
+                                    not use such
+                                    marks without the prior written permission of the Company. All other names, logos,
+                                    product and
+                                    service names, designs, and slogans on this Website are the trademarks of their
+                                    respective
+                                    owners.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                10.Copyright Infringement
+
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>If you believe that any User Contributions violate your copyright, please send us a
+                                    notice
+                                    of copyright infringement at our address specified for contacting us. It is the
+                                    policy of the
+                                    Company to terminate the user accounts of infringers and remove infringing
+                                    materials.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                24.Entire Agreement
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>The Terms of Use and our Privacy Policy constitute the sole and entire agreement
+                                    between you
+                                    and CrowdFunding regarding the use of the Website and supersede all prior and
+                                    contemporaneous
+                                    understandings, agreements, representations, and warranties, both written and oral,
+                                    regarding
+                                    such use. In the event of any conflict between the provisions herein and a separate
+                                    agreement
+                                    between you and Ketto or Ketto USA, the provision of that agreement shall control
+                                    and
+                                    prevail.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACCORDION START - PRIVACY POLICY -->
+
+
+        <div class="container-fluid">
+            <div class="row row-raised shadow p-3">
+                <h2 id="privacy" class="d-flex">Privacy Policy</h2>
+                <hr style="width: 98%;">
+                <div class="accordion" id="accordionExample2">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                1. Respecting Privacy
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample2">
+                            <div class="accordion-body">
+                                <p>Privacy is a fundamental right, and at CrowdFunding and its group companies, it
+                                    is treated as such. This document sets forth our current policy in this
+                                    regard.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                2. Sources of Personal Data
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample2">
+                            <div class="accordion-body">
+                                <p>Our business is founded on the principle that people matter. Respect for people
+                                    is the foundation of our business. Respect for people includes respecting their
+                                    right to privacy.
+
+                                    We are engaged in the business of using innovative ways to bring health to all in
+                                    India. Our website seeks to bring cases of those in need of healthcare and other
+                                    essential services to the attention of those in a position to make a difference and
+                                    the opportunity to do so. The users of our website are those in need and those
+                                    seeking to help.
+
+                                    In the conduct of our business, we collect and process personal data of our users
+                                    and visitors. Personal data is collected in the course of transacting on the
+                                    website. Personal data is also collected by CrowdFunding and its affiliates outside
+                                    of website through in-person meetings, participation in conferences and other
+                                    business forums, transaction or promotion of business, and with respect to job
+                                    applicants, through job application materials and interviews. Personal data is also
+                                    collected through social media; from solicited and unsolicited communications;
+                                    responses to promotional and other materials, among others. If your personal data is
+                                    available with us, more likely than not, it has been shared by you with us.
+
+                                    Data collection technologies built into our websites, telecommunication systems,
+                                    digital advertising, social media, etc. are additional sources of personal data
+                                    collection. In addition to personal data that a user voluntarily furnishes, these
+                                    electronic systems also collect personal data without the knowledge of the user,
+                                    including user’s preferences, frequency of access, IP addresses, type of browser,
+                                    communication device or operating systems used, and geographic location, etc.
+
+                                    Separately, we also collect and process personal data of our employees and
+                                    independent contractors at the time of, in the course of and following their
+                                    retention.</p>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                3. Third-Party Activities
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample2">
+                            <div class="accordion-body">
+                                <p>Unaffiliated third parties, such as Google, Facebook, Twitter, etc. are
+                                    providers of avenues, content, functionality and services for our web and social
+                                    media sites. We do not control what and how these and other third parties collect
+                                    personal data or how they use it. We do know, however, that in addition to using
+                                    sophisticated technologies such as cookies and web beacons on web and social media
+                                    sites, including sites such as ours, third parties routinely employ new and
+                                    innovative tools, techniques and practices to collect, receive, process, buy and
+                                    sell personal information over extended durations, build sophisticated user profiles
+                                    and commercially exploit it. We do not control and are not responsible for the
+                                    privacy and business practices of these third parties. Note here that certain of
+                                    their activities can potentially be managed by users themselves, as for instance,
+                                    through Internet browser and handheld app controls.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                4. Protecting Personal Data
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                            data-bs-parent="#accordionExample2">
+                            <div class="accordion-body">
+                                <p>We use physical, technical and administrative measures to protect personal data
+                                    against loss, theft and unauthorized use, disclosure or modification. We strive to
+                                    protect the information we maintain; however, we cannot ensure or warrant the
+                                    security of any information that is transmitted to or held by us because data
+                                    transmission and storage is neither error-free nor completely secure.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                5. Changes to this Privacy Policy
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                            data-bs-parent="#accordionExample2">
+                            <div class="accordion-body">
+                                <p>We may update this Privacy Policy at any time. The version currently available
+                                    on our website is the most updated version and contains the date it was last
+                                    updated.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block script %}
+<script>
+    function submit_entry() {
+        var name = document.getElementById("name")
+        var message = document.getElementById("message")
+
+        var entry = {
+            name: name.value,
+            message: message.value
+        }
+
+        fetch(`${window.origin}/guestbook/create-entry`, {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify(entry),
+            cache: 'no-cache',
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        })
+            .then(function (response) {
+                if (response.status !== 200) {
+                    // console.log(`Response status was not 200:${response.status} `)
+                    alert("Feedback could not be submitted !")
+                    return
+                }
+                response.json().then(function (data) {
+
+                    // console.log(data)
+                    alert(data.data)
+                })
+            })
+    }
+</script>
+{% endblock script %}

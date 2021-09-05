@@ -1,0 +1,65 @@
+set FLASK_APP=market.py
+flask run
+
+
+Item.query.all()
+
+>>> Item.query.filter_by(price=500)
+
+>>> for item in Item.query.filter_by(price=510): 
+...     item.name
+
+(env) D:\projects\websites\OlxWeb>py
+Python 3.9.5 .....
+>>> from market.models import db
+>>> db.drop_all()
+>>> db.create_all()
+>>> from market.models import User, Item
+
+>>> u1=User(username='puru',password_hash='123456',email_address='jsc@jsc.com') 
+>>> db.session.add(u1)
+>>> db.session.commit()
+>>> User.query.all()
+[<User 1>]
+>>> i1= Item(name='Samsung1', description='new phone', barcode='546654', price=5000) 
+>>> db.session.add(i1)
+>>> db.session.commit()
+>>> i1= Item(name='Laptop', description='new comp', barcode='5d46654', price=50000)  
+>>> db.session.add(i1)  
+>>> db.session.commit()                                                              
+>>> Item.query.all()
+[Iem Samsung1, Iem Laptop]
+>>> Item.query.filter_by(name='Samsung1')
+<flask_sqlalchemy.BaseQuery object at 0x00000198B82EBAF0>
+>>> item1=Item.query.filter_by(name='Samsung1')
+>>> item1
+<flask_sqlalchemy.BaseQuery object at 0x00000198B93DDCA0>
+>>> item1=Item.query.filter_by(name='Samsung1').first()
+>>> item1
+Iem Samsung1
+>>> item1.owner
+
+### set owner to an item
+___________________________________________________________________________
+>>> db.session.rollback() 
+>>> item1.owner= User.query.filter_by(username='puru').first().id
+>>> db.session.add(item1) 
+>>> db.session.commit()   
+>>> item1.owner 
+1
+>>> i= Item.query.filter_by(name='Samsung1').first()
+>>> i.owned_user
+<User 1>
+>>>
+___________________________________________________________________________
+
+
+
+
+
+
+
+pip install flask-wtf
+pip install wtforms
+pip install wtforms[email]
+pip install flask_login

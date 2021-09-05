@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% block title %}
+home
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- CARAOUSEL START -->
+
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade position-relative" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{url_for('static',filename='/img/category/animal.jpg')}}" class="d-block w-100   h-60"
+                style="height: 600px; filter: blur(5px);" alt="...">
+            <div class="carousel-caption position-absolute" style="top: 40%;">
+                <h1 class="display-2">Crowd Fund</h1>
+                <h3>Let Us Build a Better World Together</h3>
+                <!-- <button type="button" class="btn btn-outline-light btn-lg">VIEW DEMO</button> -->
+                <a type="button" href="{{url_for('market_page')}}" class="btn btn-primary btn-lg">Get Started</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{url_for('static',filename='/img/category/Education.jpg')}}" class="d-block w-100 h-60"
+                style="height: 600px; filter: blur(5px);" alt="...">
+            <div class="carousel-caption position-absolute" style="top: 40%;">
+                <h1 class="display-2">Crowd Fund</h1>
+                <h3>Help Educate a Child Today</h3>
+                <!-- <button type="button" class="btn btn-outline-light btn-lg">VIEW DEMO</button> -->
+                <a type="button" href="{{url_for('market_page')}}" class="btn btn-primary btn-lg">Get Started</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{url_for('static',filename='/img/category/Children.jpg')}}" class="d-block w-100 h-60"
+                style="height: 600px; filter: blur(5px);" alt="...">
+            <div class="carousel-caption position-absolute " style="top: 40%;">
+                <h1 class="display-2">Crowd Fund</h1>
+                <h3>Help to build a better future for Them</h3>
+                <!-- <button type="button" class="btn btn-outline-light btn-lg">VIEW DEMO</button> -->
+                <a type="button" href="{{url_for('market_page')}}" class="btn btn-primary btn-lg">Get Started</a>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!--- Jumbotron -->
+<div id="about" class="text-dark">
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-9 ">
+            <p class="lead"> A platform for giving back a small part of ours to bring Happiness and Hopes to others.
+            </p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
+            <a href="{{url_for('fundraise_page')}}"><button type="button"
+                    class="btn btn-outline-secondary btn-lg">Create New Fundraiser</button></a>
+        </div>
+    </div>
+</div>
+
+<!--- Two Column Section -->
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-12 col-lg-7">
+            <h2 class="featurette-heading ">Covid-19 Relief Fund</h2>
+            <div>
+                <a href="/market/q?id=1&category=%20Medical" class="btn btn-primary">Donate</a>
+                <p class="text-danger lead "> The second wave of Corona Virus has brought the world on its knees and has
+                    yet
+                    again created an international pandemic emergency situation.
+                </p>
+
+            </div>
+            <p style="font-weight: bold; font-size: 25px; ">Your donations will help in,</p>
+            <p>
+                1. Providing Cooked Food & Ration for Needy<br>
+                2. Providing free of cost oxygen cylinders<br>
+                3. Providing Masks and medicine<br>
+                4. Providing Hydraulic beds to patients <br>
+                5. Sanitizing areas that are most vulnerable<br>
+
+        </div>
+        <div class="col-lg-5">
+            <img src="{{url_for('static',filename='/img/category/covid.jpg')}}"
+                style="border-color: white; border-width: thick; border-style: solid;" class="img-fluid">
+        </div>
+    </div>
+</div>
+<hr class="my-4">
+
+
+<!--- Two Column Section -->
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-12 col-lg-4">
+            <img src="{{url_for('static',filename='/img/category/children.jpg')}}"
+                style="border-color: white; border-width: thick; border-style: solid;" class="img-fluid">
+        </div>
+        <div class="col-md-12 col-lg-8">
+            <h2 class="featurette-heading ">Slum Areas</h2>
+            <div><a href="/market/q?id=2&category=%20Education" class="btn btn-primary">Donate</a>
+                <p class="lead ">Your Donation will help us in providing them,
+                </p>
+
+            </div>
+            1. 3 Meals a Day<br>
+            We use the donation money to help in providing food to the people living in te slums. This helps them to be
+            healthier and maintain proper hygiene and immunity to diseases. <br>
+            2. Proper House<br>
+            These organisations try to build these people a livable space with proper hygiene inside and out.
+            3. Building Better Community<br>
+            A small team of dedicated volunteers teach and educate the people about different fields to help them settle
+            in various professions.
+            4. Children's Education <br>
+            Your donation goes to the education of the children living in these areas. This inturn will help these
+            children and their communities to get out of the slums in the future.
+        </div>
+
+    </div>
+</div>
+<hr class="my-4">
+
+
+<!--- Two Column Section -->
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-12 col-lg-8">
+            <h2 class="featurette-heading">Wild Life</span>
+            </h2> <a href="market/q?id=3&category=%20Animal" class="btn btn-primary">Donate</a>
+            <div>
+                <p class="lead">Your Donation to the WildLife conservation organisations will help in,
+                </p>
+
+            </div>
+            1. Saving the animals from the poachers<br>
+            These organisations convinces poachers to turn in their spears for shovels by teaching them beekeeping,
+            Tilapia fish farming and how to grow vegetables. <br>
+            2. Rescuing and rehabilitisation<br>
+
+            A team of dedicated volunteers rescue several number of animals and nurture them back to health and then
+            release them back into the wild.<br>
+            3. Reducing the Human-Wildlife conflicts<br>
+            4.Protecting the animals specially focusing on endangered ones <br> <br>
+
+        </div>
+        <div class="col-lg-4">
+            <img src="{{url_for('static',filename='/img/category/animal.jpg')}}"
+                style="border-color: white; border-width: thick; border-style: solid;" class="img-fluid">
+        </div>
+    </div>
+</div>
+<hr class="my-4">
+<!--- Fixed background -->
+<figure>
+    <div class="fixed-wrap">
+        <div id="fixed">
+
+        </div>
+    </div>
+</figure>
+
+
+
+<!--- Meet the team -->
+<div id="team" class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="display-4">Meet The Team</h1>
+        </div>
+
+    </div>
+    <hr>
+</div>
+
+<!--- Cards -->
+<div class="container-fluid padding text-dark">
+    <div class="row padding">
+        <div class=" col-lg-3 col-md-4 col-sm-6 p-2">
+            <div class="card">
+                <img src="{{url_for('static',filename='img/website/puranjan.jpg')}}" class="card-img-top"
+                    style="max-height: 200px;">
+                <div class="card-body">
+                    <h4 class="card-title">Puranjan Prithu</h4>
+                    <p class="card-text"> B.Tech 3rd Year Comp. Sc. Engineering</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 p-2">
+            <div class="card">
+                <img src="{{url_for('static',filename='img/website/himanshu.jpg')}}" class="card-img-top"
+                    style="max-height: 200px;">
+                <div class="card-body">
+                    <h4 class="card-title">Himanshu Singh</h4>
+                    <p class="card-text"> B.Tech 3rd Year Comp. Sc. Engineering</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-sm-6 p-2">
+            <div class="card">
+                <img src="{{url_for('static',filename='img/website/pranav.jpg')}}" class="card-img-top"
+                    style="max-height: 200px;">
+                <div class="card-body">
+                    <h4 class="card-title">Pranav Dhiman</h4>
+                    <p class="card-text"> B.Tech 3rd Year Comp. Sc. Engineering</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-sm-6 p-2">
+            <div class="card">
+                <img src="{{url_for('static',filename='img/website/abhishek.jpg')}}" class="card-img-top"
+                    style="max-height: 200px;">
+                <div class="card-body">
+                    <h4 class="card-title">Abhishek Singh</h4>
+                    <p class="card-text"> B.Tech 3rd Year Comp. Sc. Engineering</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<hr>
+<!--- Two Column Section -->
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-12 col-lg-8">
+            <h2>Our Philosophy </h2>
+            <p>A lightweight, flexible component that can optionally extend the entire viewport to showcase key
+                marketing messages on your site.</p>
+            <p>A lightweight, flexible component that can optionally extend the entire viewport to showcase key
+                marketing messages on your site.</p>
+            <p>A lightweight, flexible component that can optionally extend the entire viewport to showcase key
+                marketing messages on your site.</p>
+
+        </div>
+        <div class="col-lg-4">
+            <img src="{{url_for('static',filename='/img/category/hand.jpg')}}"
+                style="border-color: white; border-width: thick; border-style: solid;" class="img-fluid">
+        </div>
+    </div>
+    <hr class="my-4">
+</div>
+
+
+<div class="row text-center table-responsive p-3 w-100">
+    <table class=" ">
+        <tr>
+            {% for cat in category %}
+            <td class="border"><img src="{{url_for('static',filename='/img/category/'+cat.name+ '.jpg')}}"
+                    alt="{{cat.name}}" height="150px">
+                <span>{{cat.name}}</span>
+            </td>
+
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+
+<br><br>
+{% endblock %}
